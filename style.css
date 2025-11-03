@@ -1,0 +1,47 @@
+
+@font-face {
+    font-family: 'Andy Bold';
+    src: url('/static/fonts/Andy-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Andy Bold', Arial, sans-serif; /* fallback in case font fails */
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    font-family: 'Andy Bold', Arial, sans-serif;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#messages {
+    font-family: 'Andy Bold', Arial, sans-serif;
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #444;
+    padding: 10px;
+}
+
+#dev-panel {
+    font-family: 'Andy Bold', Arial, sans-serif;
+    display: none;
+    border: 2px solid red;
+    padding: 10px;
+    margin-top: 20px;
+}
