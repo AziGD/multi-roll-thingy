@@ -3,15 +3,15 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 import random
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
 # Developer accounts (fuck you maplezi for breaking my game - AziGD
 # no fuck you AziGD - Maplezi
-# syfm yall im tryna sleep - KH4CB5)
-# add your username here cuz why the fuck not (i literally just woke up yall are fightong agai- oh ofcourse maple just killed azi in game - kav_kavernus)
+# syfm yall im tryna sleep - KH4CB5
+# i literally just woke up yall are fightong agai- oh ofcourse maple just killed azi in game - kav_kavernus)
 DEVELOPERS = ["Maplezi", "AziGD", "KH4CB5", "kav_kavernus"]
 
 # players storage (i drank coca cola rn - AziGD)
@@ -19,18 +19,16 @@ players = {}
 
 # seasoned steak session (lmao nice - KH4CB5)
 def get_current_season():
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
     month = now.month
-    if month == 11:
-        return "Thanksgiving"
-    elif month in [12, 1]:
+    if month in [12, 1]:
         return "Christmas"
     elif month in [2, 3]:
         return "Valentine / Spring"
     elif month in [6, 7, 8]:
         return "Summer"
-    elif month in [10]:
-        return "Halloween / Autumn"
+    elif month in [10, 11]:
+        return "Thanksgiving"  # November = thanksgiving
     else:
         return "Neutral Season"
 
@@ -68,14 +66,23 @@ def handle_roll(data):
     if not name:
         return
 
-    roll_result = random.randint(1, 1_000_000_000_000)  # why br7u (sybau 🥀💔 - AziGD)
+    roll_result = random.randint(1, 1_000_000_000_000)  # sybau 🥀💔 - AziGD
     players[name] = roll_result
-    
-    # check auras cuz i did (im gonna fucking demote you two - KH4CB5)
+
+    # check auras (branched/mutated auras can be added here later)
     earned_auras = []
     for aura in auras:
-        if random.random() < aura['chance']:
-            earned_auras.append(aura['name'])
+        chance = aura.get('chance', 0)
+        if random.random() < chance:
+            earned_auras.append(aura.get('name', 'Unknown Aura'))
+
+            # special cutscene for super rare auras (chance < 1/1000)
+            if chance < 0.001:  # 1/1000
+                # emit only to the player who rolled it
+                emit('special_cutscene', {
+                    'aura': aura.get('name', 'Unknown Aura'),
+                    'message': f"🎬 Congrats {name}! You got a super rare aura: {aura.get('name')}!"
+                }, room=request.sid)  # kav_kavernus was here lmao
 
     # prepare message if needed (NO DONT PLS WERE SORRY - Maplezi and AziGD)
     # (they deserve it kh4 - kav_kavernus)
@@ -83,7 +90,7 @@ def handle_roll(data):
         aura_str = ", ".join(earned_auras)
         message = f"🎉 {name} rolled {roll_result} and got aura(s): {aura_str}, woohoo yay fun, anyway heres the season: {current_season}"
     else:
-        message = f"{name} rolled {roll_result} ggs, current season(ing steak) is {current_season}"
+        message = f"{name} rolled {roll_result} ggs, current season(ing steak) {current_season}"
 
     emit('roll_result', {'message': message}, broadcast=True)
 
