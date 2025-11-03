@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplayer Rolling Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" integrity="sha384-XB9r1... (use the latest)" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Multiplayer Roll Game 🎲</h1>
+        </header>
+
+        <!-- Season display -->
+        <div id="season">Current season: {{ season }}</div>
+
+        <!-- Player input -->
+        <input type="text" id="player-name" placeholder="Enter your name">
+        <button id="join-btn">Join Game</button>
+        <button id="roll-btn">Roll</button>
+
+        <!-- Messages -->
+        <ul id="messages"></ul>
+
+        <!-- Developer panel (hidden by default) -->
+        <div id="dev-panel">
+            <h2>Dev Panel</h2>
+            <p>Only visible to developers.</p>
+        </div>
+    </div>
+</body>
+</html>
