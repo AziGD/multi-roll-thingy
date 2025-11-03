@@ -1,0 +1,514 @@
+[
+  {
+    "name": "Glint of Dawn",
+    "chance": 0.5,
+    "mutations": [
+      {"name": "Glint of Dawn: Morning Ray", "chance": 0.3333},
+      {"name": "Glint of Dawn: Aurora Spark", "chance": 0.3333}
+    ]
+  },
+
+  {
+    "name": "Verdant Whisper",
+    "chance": 0.25,
+    "mutations": [
+      {"name": "Verdant Whisper: Leaffall", "chance": 0.1667},
+      {"name": "Verdant Whisper: Grove Song", "chance": 0.1667}
+    ]
+  },
+
+  {
+    "name": "Crimson Echo",
+    "chance": 0.2,
+    "mutations": [
+      {"name": "Crimson Echo: Ember Flash", "chance": 0.1333},
+      {"name": "Crimson Echo: Scarlet Gleam", "chance": 0.1333}
+    ]
+  },
+
+  {
+    "name": "Azure Rift",
+    "chance": 0.125,
+    "mutations": [
+      {"name": "Azure Rift: Frost Shard", "chance": 0.0833},
+      {"name": "Azure Rift: Glacier Shimmer", "chance": 0.0833}
+    ]
+  },
+
+  {
+    "name": "Obsidian Veil",
+    "chance": 0.0625,
+    "mutations": [
+      {"name": "Obsidian Veil: Shadow Cloak", "chance": 0.0417},
+      {"name": "Obsidian Veil: Void Mist", "chance": 0.0417}
+    ]
+  },
+
+  {
+    "name": "Luminous Ember",
+    "chance": 0.03125,
+    "mutations": [
+      {"name": "Luminous Ember: Firefly", "chance": 0.0208},
+      {"name": "Luminous Ember: Candlelight", "chance": 0.0208}
+    ]
+  },
+
+  {
+    "name": "Sapphire Breeze",
+    "chance": 0.015625,
+    "mutations": [
+      {"name": "Sapphire Breeze: Ocean Mist", "chance": 0.0104},
+      {"name": "Sapphire Breeze: Tide Spark", "chance": 0.0104}
+    ]
+  },
+
+  {
+    "name": "Golden Radiance",
+    "chance": 0.0078125,
+    "mutations": [
+      {"name": "Golden Radiance: Sunflare", "chance": 0.0052},
+      {"name": "Golden Radiance: Dusk Glow", "chance": 0.0052}
+    ]
+  },
+
+  {
+    "name": "Crimson Vein",
+    "chance": 0.0066667,
+    "mutations": [
+      {"name": "Crimson Vein: Bloodline", "chance": 0.0044},
+      {"name": "Crimson Vein: Heartbeat", "chance": 0.0044}
+    ]
+  },
+
+  {
+    "name": "Twilight Shard",
+    "chance": 0.002857,
+    "mutations": [
+      {"name": "Twilight Shard: Evening Glow", "chance": 0.0019},
+      {"name": "Twilight Shard: Dusk Prism", "chance": 0.0019}
+    ]
+  },
+
+  {
+    "name": "Frostbite Gleam",
+    "chance": 0.002482,
+    "mutations": [
+      {"name": "Frostbite Gleam: Ice Crystal", "chance": 0.00165},
+      {"name": "Frostbite Gleam: Winter Spark", "chance": 0.00165}
+    ]
+  },
+
+  {
+    "name": "Emberstorm",
+    "chance": 0.002,
+    "mutations": [
+      {"name": "Emberstorm: Blaze", "chance": 0.00133},
+      {"name": "Emberstorm: Firestorm", "chance": 0.00133}
+    ]
+  },
+
+  {
+    "name": "Shadow Mirage",
+    "chance": 0.001953,
+    "mutations": [
+      {"name": "Shadow Mirage: Phantom", "chance": 0.0013},
+      {"name": "Shadow Mirage: Ghostlight", "chance": 0.0013}
+    ]
+  },
+
+  {
+    "name": "Celestial Prism",
+    "chance": 0.001428,
+    "mutations": [
+      {"name": "Celestial Prism: Starlight", "chance": 0.00095},
+      {"name": "Celestial Prism: Nova", "chance": 0.00095}
+    ]
+  },
+
+  {
+    "name": "Aurora Bloom",
+    "chance": 0.001291,
+    "mutations": [
+      {"name": "Aurora Bloom: Petal Glow", "chance": 0.00086},
+      {"name": "Aurora Bloom: Flora Spark", "chance": 0.00086}
+    ]
+  },
+
+  {
+    "name": "Nebula Core",
+    "chance": 0.00125,
+    "mutations": [
+      {"name": "Nebula Core: Stellar", "chance": 0.00083},
+      {"name": "Nebula Core: Cosmic Dust", "chance": 0.00083}
+    ]
+  },
+
+  {
+    "name": "Phantom Tide",
+    "chance": 0.001111,
+    "mutations": [
+      {"name": "Phantom Tide: Wave Ghost", "chance": 0.00074},
+      {"name": "Phantom Tide: Aqua Shade", "chance": 0.00074}
+    ]
+  },
+
+  {
+    "name": "Eclipse Shard",
+    "chance": 0.000833,
+    "mutations": [
+      {"name": "Eclipse Shard: Darkbeam", "chance": 0.000555},
+      {"name": "Eclipse Shard: Moonshadow", "chance": 0.000555}
+    ]
+  },
+
+  {
+    "name": "Infernal Pulse",
+    "chance": 0.000996,
+    "mutations": [
+      {"name": "Infernal Pulse: Lava Spark", "chance": 0.000664},
+      {"name": "Infernal Pulse: Flame Vein", "chance": 0.000664}
+    ]
+  },
+
+  {
+    "name": "Titanium Flux",
+    "chance": 0.000976,
+    "mutations": [
+      {"name": "Titanium Flux: Alloy", "chance": 0.00065},
+      {"name": "Titanium Flux: Metalcore", "chance": 0.00065}
+    ]
+  },
+
+  {
+    "name": "Quantum Rift",
+    "chance": 0.000847,
+    "mutations": [
+      {"name": "Quantum Rift: Particle", "chance": 0.000565},
+      {"name": "Quantum Rift: Singularity", "chance": 0.000565}
+    ]
+  },
+
+  {
+    "name": "Spectral Vein",
+    "chance": 0.000588,
+    "mutations": [
+      {"name": "Spectral Vein: Wraith", "chance": 0.000392},
+      {"name": "Spectral Vein: Haunt", "chance": 0.000392}
+    ]
+  },
+
+  {
+    "name": "Auric Gleam",
+    "chance": 0.000488,
+    "mutations": [
+      {"name": "Auric Gleam: Goldbeam", "chance": 0.000325},
+      {"name": "Auric Gleam: Dawnlight", "chance": 0.000325}
+    ]
+  },
+
+  {
+    "name": "Frostveil",
+    "chance": 0.000435,
+    "mutations": [
+      {"name": "Frostveil: Shiver", "chance": 0.00029},
+      {"name": "Frostveil: Iceveil", "chance": 0.00029}
+    ]
+  },
+
+  {
+    "name": "Nova Pulse",
+    "chance": 0.000434,
+    "mutations": [
+      {"name": "Nova Pulse: Starflare", "chance": 0.000289},
+      {"name": "Nova Pulse: Cosmic Ray", "chance": 0.000289}
+    ]
+  },
+
+  {
+    "name": "Luminara",
+    "chance": 0.000333,
+    "mutations": [
+      {"name": "Luminara: Glowburst", "chance": 0.000222},
+      {"name": "Luminara: Radiance", "chance": 0.000222}
+    ]
+  },
+  
+  {
+    "name": "Ethereal Mist",
+    "chance": 0.000312,
+    "mutations": [
+      {"name": "Ethereal Mist: Ghostfog", "chance": 0.000208},
+      {"name": "Ethereal Mist: Phantom Haze", "chance": 0.000208}
+    ]
+  },
+
+  {
+    "name": "Oblivion Shard",
+    "chance": 0.000294,
+    "mutations": [
+      {"name": "Oblivion Shard: Void Fragment", "chance": 0.000196},
+      {"name": "Oblivion Shard: Shadow Fragment", "chance": 0.000196}
+    ]
+  },
+
+  {
+    "name": "Crimson Nova",
+    "chance": 0.000283,
+    "mutations": [
+      {"name": "Crimson Nova: Flameburst", "chance": 0.000188},
+      {"name": "Crimson Nova: Emberflare", "chance": 0.000188}
+    ]
+  },
+
+  {
+    "name": "Astral Flame",
+    "chance": 0.000271,
+    "mutations": [
+      {"name": "Astral Flame: Starfire", "chance": 0.000181},
+      {"name": "Astral Flame: Celestial Spark", "chance": 0.000181}
+    ]
+  },
+
+  {
+    "name": "Void Echo",
+    "chance": 0.000256,
+    "mutations": [
+      {"name": "Void Echo: Dark Resonance", "chance": 0.000171},
+      {"name": "Void Echo: Shadow Pulse", "chance": 0.000171}
+    ]
+  },
+
+  {
+    "name": "Solar Radiance",
+    "chance": 0.000243,
+    "mutations": [
+      {"name": "Solar Radiance: Sunflare", "chance": 0.000162},
+      {"name": "Solar Radiance: Dawnlight", "chance": 0.000162}
+    ]
+  },
+
+  {
+    "name": "Lunar Glow",
+    "chance": 0.000231,
+    "mutations": [
+      {"name": "Lunar Glow: Moonbeam", "chance": 0.000154},
+      {"name": "Lunar Glow: Nightlight", "chance": 0.000154}
+    ]
+  },
+
+  {
+    "name": "Tempest Edge",
+    "chance": 0.000218,
+    "mutations": [
+      {"name": "Tempest Edge: Gale Slash", "chance": 0.000145},
+      {"name": "Tempest Edge: Stormblade", "chance": 0.000145}
+    ]
+  },
+
+  {
+    "name": "Celestia Prism",
+    "chance": 0.000204,
+    "mutations": [
+      {"name": "Celestia Prism: Starlight", "chance": 0.000136},
+      {"name": "Celestia Prism: Nova Spark", "chance": 0.000136}
+    ]
+  },
+
+  {
+    "name": "Twilight Ember",
+    "chance": 0.000192,
+    "mutations": [
+      {"name": "Twilight Ember: Duskfire", "chance": 0.000128},
+      {"name": "Twilight Ember: Nightflare", "chance": 0.000128}
+    ]
+  },
+
+  {
+    "name": "Phantom Glimmer",
+    "chance": 0.000181,
+    "mutations": [
+      {"name": "Phantom Glimmer: Wraith Spark", "chance": 0.000120},
+      {"name": "Phantom Glimmer: Shade Gleam", "chance": 0.000120}
+    ]
+  },
+
+  {
+    "name": "Aetherion",
+    "chance": 0.000172,
+    "mutations": [
+      {"name": "Aetherion: Skyfire", "chance": 0.000114},
+      {"name": "Aetherion: Zephyr Spark", "chance": 0.000114}
+    ]
+  },
+
+  {
+    "name": "Obsidian Mirage",
+    "chance": 0.000164,
+    "mutations": [
+      {"name": "Obsidian Mirage: Shadow Cloak", "chance": 0.000109},
+      {"name": "Obsidian Mirage: Dark Veil", "chance": 0.000109}
+    ]
+  },
+
+  {
+    "name": "Radiant Halo",
+    "chance": 0.000157,
+    "mutations": [
+      {"name": "Radiant Halo: Lightring", "chance": 0.000105},
+      {"name": "Radiant Halo: Sun Halo", "chance": 0.000105}
+    ]
+  },
+
+  {
+    "name": "Spectral Aurora",
+    "chance": 0.000148,
+    "mutations": [
+      {"name": "Spectral Aurora: Ghostlight", "chance": 0.000099},
+      {"name": "Spectral Aurora: Phantom Glow", "chance": 0.000099}
+    ]
+  },
+
+  {
+    "name": "Titanflare",
+    "chance": 0.000142,
+    "mutations": [
+      {"name": "Titanflare: Colossus Spark", "chance": 0.000095},
+      {"name": "Titanflare: Giant Ember", "chance": 0.000095}
+    ]
+  },
+
+  {
+    "name": "Lunaris Edge",
+    "chance": 0.000133,
+    "mutations": [
+      {"name": "Lunaris Edge: Moonblade", "chance": 0.000089},
+      {"name": "Lunaris Edge: Crescent Slash", "chance": 0.000089}
+    ]
+  },
+
+  {
+    "name": "Solarion Prism",
+    "chance": 0.000125,
+    "mutations": [
+      {"name": "Solarion Prism: Sun Spark", "chance": 0.000083},
+      {"name": "Solarion Prism: Radiant Beam", "chance": 0.000083}
+    ]
+  },
+
+  {
+    "name": "Nebular Echo",
+    "chance": 0.000118,
+    "mutations": [
+      {"name": "Nebular Echo: Star Pulse", "chance": 0.000078},
+      {"name": "Nebular Echo: Cosmic Wave", "chance": 0.000078}
+    ]
+  },
+
+  {
+    "name": "Astralis Core",
+    "chance": 0.000112,
+    "mutations": [
+      {"name": "Astralis Core: Stellar Spark", "chance": 0.000074},
+      {"name": "Astralis Core: Nova Core", "chance": 0.000074}
+    ]
+  },
+
+  {
+    "name": "Vortex Shard",
+    "chance": 0.000106,
+    "mutations": [
+      {"name": "Vortex Shard: Whirlwind", "chance": 0.000071},
+      {"name": "Vortex Shard: Tornado Spark", "chance": 0.000071}
+    ]
+  },
+
+  {
+    "name": "Inferno Prism",
+    "chance": 0.0001,
+    "mutations": [
+      {"name": "Inferno Prism: Blaze Core", "chance": 0.000067},
+      {"name": "Inferno Prism: Ember Spark", "chance": 0.000067}
+    ]
+  },
+
+  {
+    "name": "Celestium",
+    "chance": 0.000096,
+    "mutations": [
+      {"name": "Celestium: Starcore", "chance": 0.000064},
+      {"name": "Celestium: Lightwave", "chance": 0.000064}
+    ]
+  },
+
+  {
+    "name": "Phantom Nova",
+    "chance": 0.000091,
+    "mutations": [
+      {"name": "Phantom Nova: Wraithfire", "chance": 0.000061},
+      {"name": "Phantom Nova: Shadowflare", "chance": 0.000061}
+    ]
+  },
+
+  {
+    "name": "Eclipse Veil",
+    "chance": 0.000088,
+    "mutations": [
+      {"name": "Eclipse Veil: Dark Shroud", "chance": 0.000058},
+      {"name": "Eclipse Veil: Moon Shadow", "chance": 0.000058}
+    ]
+  },
+
+  {
+    "name": "Radiant Ember",
+    "chance": 0.000083,
+    "mutations": [
+      {"name": "Radiant Ember: Flame Ray", "chance": 0.000055},
+      {"name": "Radiant Ember: Glow Spark", "chance": 0.000055}
+    ]
+  },
+
+  {
+    "name": "Luminaris",
+    "chance": 0.000078,
+    "mutations": [
+      {"name": "Luminaris: Dawn Spark", "chance": 0.000052},
+      {"name": "Luminaris: Sunbeam", "chance": 0.000052}
+    ]
+  },
+
+  {
+    "name": "Oblivion Prism",
+    "chance": 0.000074,
+    "mutations": [
+      {"name": "Oblivion Prism: Void Spark", "chance": 0.000049},
+      {"name": "Oblivion Prism: Shadow Beam", "chance": 0.000049}
+    ]
+  },
+
+  {
+    "name": "Aurora Shard",
+    "chance": 0.000071,
+    "mutations": [
+      {"name": "Aurora Shard: Dawnlight", "chance": 0.000047},
+      {"name": "Aurora Shard: Aurora Spark", "chance": 0.000047}
+    ]
+  },
+
+  {
+    "name": "Solarflare",
+    "chance": 0.000068,
+    "mutations": [
+      {"name": "Solarflare: Sunburst", "chance": 0.000045},
+      {"name": "Solarflare: Radiant Flash", "chance": 0.000045}
+    ]
+  },
+
+  {
+    "name": "Lunaris Prism",
+    "chance": 0.000064,
+    "mutations": [
+      {"name": "Lunaris Prism: Moonbeam", "chance": 0.000042},
+      {"name": "Lunaris Prism: Crescent Beam", "chance": 0.000042}
+    ]
+  }
+]
