@@ -1,23 +1,64 @@
-# multiplayer_roll_game_seasonal.py
-from flask import Flask, render_template, request
+# multiplayer_roll_game_sqlite.py
+from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import SocketIO, emit
+from werkzeug.security import generate_password_hash, check_password_hash
 import random
+import sqlite3
 import json
 from datetime import datetime, timezone
 
+# -------------------- Flask + SocketIO --------------------
 app = Flask(__name__)
+app.secret_key = "supersecretkey"  # replace with a secure key
 socketio = SocketIO(app)
 
-# Developer accounts (fuck you maplezi for breaking my game - AziGD
-# no fuck you AziGD - Maplezi
-# syfm yall im tryna sleep - KH4CB5
-# i literally just woke up yall are fightong agai- oh ofcourse maple just killed azi in game - kav_kavernus)
+# -------------------- Developer accounts --------------------
 DEVELOPERS = ["Maplezi", "AziGD", "KH4CB5", "kav_kavernus"]
 
-# players storage (i drank coca cola rn - AziGD)
-players = {}
+# -------------------- Load Auras --------------------
+with open("auras.json", "r") as f:
+    auras = json.load(f)
 
-# seasoned steak session (lmao nice - KH4CB5)
+# -------------------- Database helpers --------------------
+DB_FILE = "users.db"
+
+def init_db():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+def signup_user(username, password):
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    hashed = generate_password_hash(password)
+    try:
+        c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed))
+        conn.commit()
+        return True
+    except sqlite3.IntegrityError:
+        return False
+    finally:
+        conn.close()
+
+def login_user(username, password):
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute('SELECT password FROM users WHERE username = ?', (username,))
+    row = c.fetchone()
+    conn.close()
+    if row and check_password_hash(row[0], password):
+        return True
+    return False
+
+# -------------------- Season --------------------
 def get_current_season():
     now = datetime.now(timezone.utc)
     month = now.month
@@ -27,49 +68,76 @@ def get_current_season():
         return "Valentine / Spring"
     elif month in [6, 7, 8]:
         return "Summer"
-    elif month in [10, 11]:
-        return "Thanksgiving"  # November = thanksgiving
+    elif month == 11:
+        return "Thanksgiving"
+    elif month in [10]:
+        return "Halloween"
     else:
         return "Neutral Season"
 
 current_season = get_current_season()
 print(f"server season(ing) detected: {current_season}")
 
-# why not load the auras? (i swear to god SHUT THE FUCK UP CANADIAN MAPLE SAUCE - AziGD)
-with open("auras.json", "r") as f:
-    auras = json.load(f)
+# -------------------- Players --------------------
+players = {}
 
-# routes (swag route is best also stop you two - KH4CB5)
-# (no fuck you kh4 - Maplezi and AziGD)
+# -------------------- Routes --------------------
 @app.route('/')
 def index():
-    return render_template('index.html', season=current_season)
+    if 'username' in session:
+        return render_template('index.html', username=session['username'], season=current_season)
+    return redirect(url_for('login'))
 
-# sock events (beef steak, fuck you azi - Maplezi)
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if signup_user(username, password):
+            return redirect(url_for('login'))
+        return "Username already exists!"
+    return render_template('signup.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if login_user(username, password):
+            session['username'] = username
+            return redirect(url_for('index'))
+        return "Invalid credentials!"
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('login'))
+
+# -------------------- SocketIO events --------------------
 @socketio.on('join')
 def handle_join(data):
-    name = data.get('name')
+    name = session.get('username')
     if not name:
         return
     players[name] = None
     is_dev = name in DEVELOPERS
 
     if is_dev:
-        emit('system_message', f" dev {name} joined, wsp you have access to the dev panel.", room=request.sid)
-        emit('dev_panel', {'message': "Welcome to your dev panel bitch."}, room=request.sid)
+        emit('system_message', f"Dev {name} joined, you have access to the dev panel.", room=request.sid)
+        emit('dev_panel', {'message': "Welcome to your dev panel!"}, room=request.sid)
     else:
-        emit('system_message', f"{name} has joined the game woohoo yay fun. current season(ed steak): {current_season}", broadcast=True)
+        emit('system_message', f"{name} has joined the game. Current season: {current_season}", broadcast=True)
 
 @socketio.on('roll')
 def handle_roll(data):
-    name = data.get('name')
+    name = session.get('username')
     if not name:
         return
 
-    roll_result = random.randint(1, 1_000_000_000_000)  # sybau 🥀💔 - AziGD
+    roll_result = random.randint(1, 1_000_000_000_000)
     players[name] = roll_result
 
-    # check auras (branched/mutated auras can be added here later)
     earned_auras = []
     for aura in auras:
         chance = aura.get('chance', 0)
@@ -77,22 +145,21 @@ def handle_roll(data):
             earned_auras.append(aura.get('name', 'Unknown Aura'))
 
             # special cutscene for super rare auras (chance < 1/1000)
-            if chance < 0.001:  # 1/1000
-                # emit only to the player who rolled it
+            if chance < 0.001:
                 emit('special_cutscene', {
                     'aura': aura.get('name', 'Unknown Aura'),
                     'message': f"🎬 Congrats {name}! You got a super rare aura: {aura.get('name')}!"
-                }, room=request.sid)  # kav_kavernus was here lmao
+                }, room=request.sid)
 
-    # prepare message if needed (NO DONT PLS WERE SORRY - Maplezi and AziGD)
-    # (they deserve it kh4 - kav_kavernus)
     if earned_auras:
         aura_str = ", ".join(earned_auras)
-        message = f"🎉 {name} rolled {roll_result} and got aura(s): {aura_str}, woohoo yay fun, anyway heres the season: {current_season}"
+        message = f"🎉 {name} rolled {roll_result} and got aura(s): {aura_str}, season: {current_season}"
     else:
-        message = f"{name} rolled {roll_result} ggs, current season(ing steak) {current_season}"
+        message = f"{name} rolled {roll_result} ggs, season: {current_season}"
 
     emit('roll_result', {'message': message}, broadcast=True)
 
+# -------------------- Main --------------------
 if __name__ == '__main__':
+    init_db()
     socketio.run(app, debug=True)
