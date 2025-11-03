@@ -21,13 +21,15 @@ players = {}
 def get_current_season():
     now = datetime.utcnow()
     month = now.month
-    if month in [12, 1]:
+    if month == 11:
+        return "Thanksgiving"
+    elif month in [12, 1]:
         return "Christmas"
     elif month in [2, 3]:
         return "Valentine / Spring"
     elif month in [6, 7, 8]:
         return "Summer"
-    elif month in [10, 11]:
+    elif month in [10]:
         return "Halloween / Autumn"
     else:
         return "Neutral Season"
