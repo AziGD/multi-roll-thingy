@@ -1,47 +1,140 @@
-
+/* ====== FONT ====== */
 @font-face {
     font-family: 'Andy Bold';
-    src: url('/static/fonts/Andy-Bold.ttf') format('truetype');
+    src: url('https://raw.githubusercontent.com/azigd/multi-roll-thingy/main/static/fonts/AndyBold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
+/* ====== GLOBAL STYLES ====== */
 body {
-    font-family: 'Andy Bold', Arial, sans-serif; /* fallback in case font fails */
+    font-family: 'Andy Bold', sans-serif;
     background-color: #121212;
-    color: #fff;
-    text-align: center;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ====== CONTAINER ====== */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
 }
 
+/* ====== HEADER ====== */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #ffcc00;
+}
+
+/* ====== INPUT / BUTTONS ====== */
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
 button {
-    font-family: 'Andy Bold', Arial, sans-serif;
     padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
+    font-size: 1rem;
     border: none;
-    background-color: #4CAF50;
-    color: white;
+    border-radius: 8px;
     cursor: pointer;
+    background-color: #ff6600;
+    color: #fff;
+    transition: background 0.2s;
+    margin-left: 5px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #ff4500;
 }
 
+/* ====== SYSTEM MESSAGES ====== */
 #messages {
-    font-family: 'Andy Bold', Arial, sans-serif;
-    margin-top: 20px;
+    list-style: none;
+    padding: 0;
     max-height: 400px;
     overflow-y: auto;
-    border: 1px solid #444;
-    padding: 10px;
+    margin-bottom: 20px;
 }
 
-#dev-panel {
-    font-family: 'Andy Bold', Arial, sans-serif;
-    display: none;
-    border: 2px solid red;
-    padding: 10px;
-    margin-top: 20px;
+#messages li {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    background-color: #222;
+    word-wrap: break-word;
 }
+
+/* ====== DEV PANEL ====== */
+#dev-panel {
+    display: none; /* Only shown for devs */
+    padding: 15px;
+    margin-top: 20px;
+    border: 2px solid #ffcc00;
+    background-color: #333;
+    border-radius: 10px;
+}
+
+#dev-panel h2 {
+    margin-top: 0;
+    color: #ffcc00;
+}
+
+/* ====== SEASON DISPLAY ====== */
+#season {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #00ffcc;
+}
+
+/* ====== ROLL RESULT HIGHLIGHT ====== */
+.roll-result {
+    font-weight: bold;
+    color: #ff69b4;
+}
+
+/* ====== SCROLLBAR ====== */
+#messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: #1f1f1f;
+}
+
+/* ====== AURA COLORS (example) ====== */
+.aura-common { color: #ffffff; }
+.aura-uncommon { color: #1eff00; }
+.aura-rare { color: #0070dd; }
+.aura-epic { color: #a335ee; }
+.aura-legendary { color: #ff8000; }
+.aura-mythic { color: #ff0000; }
