@@ -1,58 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const socket = io();
+const socket = io();
+let username = "";
 
-    const joinBtn = document.getElementById("join-btn");
-    const rollBtn = document.getElementById("roll-btn");
-    const playerNameInput = document.getElementById("player-name");
-    const messagesList = document.getElementById("messages");
-    const devPanel = document.getElementById("dev-panel");
+function signup() {
+    username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    // Hide dev panel by default
-    devPanel.style.display = "none";
+    fetch('/signup', {
+        method: 'POST',
+        body: new URLSearchParams({username, password})
+    }).then(res => res.json())
+      .then(data => alert(data.message));
+}
 
-    let playerName = "";
+function login() {
+    username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    // Join button click
-    joinBtn.addEventListener("click", () => {
-        const name = playerNameInput.value.trim();
-        if (!name) {
-            alert("Please enter a name to join!");
-            return;
-        }
-        playerName = name;
-        socket.emit("join", { name: playerName });
-    });
+    fetch('/login', {
+        method: 'POST',
+        body: new URLSearchParams({username, password})
+    }).then(res => res.json())
+      .then(data => {
+          if(data.status === "success") {
+              alert(data.message);
+              document.getElementById('auth').style.display = "none";
+              document.getElementById('game').style.display = "block";
+          } else {
+              alert(data.message);
+          }
+      });
+}
 
-    // Roll button click
-    rollBtn.addEventListener("click", () => {
-        if (!playerName) {
-            alert("You need to join first!");
-            return;
-        }
-        socket.emit("roll", { name: playerName });
-    });
+function joinGame() {
+    socket.emit('join', {name: username});
+}
 
-    // Listen for system messages
-    socket.on("system_message", (msg) => {
-        addMessage(msg);
-    });
+function roll() {
+    socket.emit('roll', {name: username});
+}
 
-    // Listen for roll results
-    socket.on("roll_result", (data) => {
-        addMessage(data.message);
-    });
+socket.on('roll_result', data => {
+    const div = document.getElementById('messages');
+    div.innerHTML += `<p>${data.message}</p>`;
+});
 
-    // Show dev panel if server says so
-    socket.on("dev_panel", (data) => {
-        devPanel.style.display = "block";
-        addMessage(data.message);
-    });
+socket.on('system_message', data => {
+    const div = document.getElementById('messages');
+    div.innerHTML += `<p><b>${data}</b></p>`;
+});
 
-    function addMessage(msg) {
-        const li = document.createElement("li");
-        li.textContent = msg;
-        messagesList.appendChild(li);
-        // Scroll to bottom
-        messagesList.scrollTop = messagesList.scrollHeight;
-    }
+socket.on('special_cutscene', data => {
+    alert(data.message);
 });
